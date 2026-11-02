@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Altar de Muertos</title>
+
+  <style>
+    :root {
+      --naranja: #f47721;
+      --morado: #552583;
+      --rosa: #ed4b8b;
+      --amarillo: #ffd447;
+      --crema: #fff8e8;
+      --oscuro: #2b1734;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--oscuro);
+      background: var(--crema);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 55px 20px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(135deg, var(--morado), var(--rosa), var(--naranja));
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+    }
+
+    nav {
+      padding: 14px;
+      text-align: center;
+      background: var(--oscuro);
+    }
+
+    nav a {
+      margin: 0 12px;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--amarillo);
+    }
+
+    main {
+      width: min(1000px, 92%);
+      margin: 30px auto;
+    }
+
+    section {
+      margin-bottom: 35px;
+      padding: 25px;
+      border-radius: 14px;
+      background: white;
+      box-shadow: 0 4px 14px #2b17341a;
+    }
+
+    h2 {
+      color: var(--morado);
+    }
+
+    .imagen-principal {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .elementos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+    }
+
+    .tarjeta {
+      padding: 16px;
+      border-top: 5px solid var(--naranja);
+      border-radius: 10px;
+      background: #fff8e8;
+    }
+
+    .tarjeta:nth-child(2) { border-color: var(--rosa); }
+    .tarjeta:nth-child(3) { border-color: var(--amarillo); }
+    .tarjeta:nth-child(4) { border-color: var(--morado); }
+
+    button {
+      padding: 11px 17px;
+      border: 0;
+      border-radius: 8px;
+      color: white;
+      background: var(--morado);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background: var(--rosa);
+    }
+
+    #mensaje {
+      min-height: 28px;
+      font-weight: bold;
+      color: var(--morado);
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      color: white;
+      background: var(--oscuro);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>El Altar de Muertos</h1>
+    <p>Una tradición mexicana para recordar con amor</p>
+  </header>
+
+  <nav>
+    <a href="#significado">Significado</a>
+    <a href="#elementos">Elementos</a>
+    <a href="#actividad">Actividad</a>
+  </nav>
+
+  <main>
+    <section id="significado">
+      <h2>¿Qué significa para México?</h2>
+      <p>
+        El altar de muertos es una tradición en la que las familias recuerdan
+        y honran a sus seres queridos fallecidos. Se prepara con fotografías,
+        flores, velas y comida, como una forma simbólica de darles la bienvenida.
+        Esta celebración mezcla costumbres indígenas y tradiciones católicas.
+      </p>
+
+      <img
+        class="imagen-principal"
+        src="https://images.unsplash.com/photo-1602523961358-f9f03dd557db?auto=format&fit=crop&w=1200&q=80"
+        alt="Decoración colorida inspirada en el Día de Muertos">
+    </section>
+
+    <section id="elementos">
+      <h2>Elementos y sus significados</h2>
+
+      <div class="elementos">
+        <article class="tarjeta">
+          <h3> Cempasúchil</h3>
+          <p>Su color y aroma ayudan a guiar simbólicamente a las almas.</p>
+        </article>
+
+        <article class="tarjeta">
+          <h3> Velas</h3>
+          <p>Representan la luz que acompaña a las almas en su camino.</p>
+        </article>
+
+        <article class="tarjeta">
+          <h3> Pan de muerto</h3>
+          <p>Es una ofrenda tradicional que se comparte durante la celebración.</p>
+        </article>
+
+        <article class="tarjeta">
+          <h3> Fotografías</h3>
+          <p>Recuerdan a las personas a quienes está dedicado el altar.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="actividad">
+      <h2>Actividad: descubre un elemento</h2>
+      <p>Haz clic para conocer otro detalle del altar.</p>
+      <button onclick="mostrarDato()">Descubrir</button>
+      <p id="mensaje" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tradición, memoria y cariño </p>
+  </footer>
+
+  <script>
+    const datos = [
+      "El papel picado representa el viento y añade color al altar.",
+      "El agua se coloca para calmar la sed de las almas.",
+      "La sal simboliza la purificación.",
+      "La comida favorita de la persona homenajeada puede formar parte de la ofrenda."
+    ];
+
+    let indice = 0;
+
+    function mostrarDato() {
+      document.getElementById("mensaje").textContent = datos[indice];
+      indice = (indice + 1) % datos.length;
+    }
+  </script>
+</body>
+</html>
